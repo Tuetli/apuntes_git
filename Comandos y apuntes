@@ -1,0 +1,91 @@
+-------------------------Comandos Linux básicos a utilizar--------------------------------------
+#pwd -> muestra la direccion en la que te encuentras ubicado
+#mkdir -> crea un directorio (carpeta)
+#touch -> crea un archivo vacio
+#rm -> borra un archivo o directorio
+#cat -> permite ver el contenido de un archivo y lo muestra en la terminal
+#ls -> lista los archivos y carpetas del directorio actual
+#cd -> nos permite navegar entre directorios
+#history -> muestra el historial de comandos utilizados
+#!number -> Con number, seleccionamos el comando que deseamos ejecutar de nuestro history
+#clear -> limpia la terminal
+------------------------------------Comandos git -----------------------------------------------
+#git init -> inicializa un repositorio git en la ubicacion actual
+#git add "file" ->  añade un archivo all stagging
+#git add "." ->  añade todos los archivos modificados al stagging
+#git show -> muestra los cambios realizados en el ultimo commit
+#git log -> muestra el historico de cambios en una rama
+#git log --stat -> muestra los cambios más específicos
+#git diff -> muestra la diferencia entre un commit y otro, con uno o dos commit_id como parametro
+#git commit -m "mensaje" -> Envia los cambios de el/los archivos al repositorio con un mensaje
+#git status -> Permite saber que archivos y cuales no fueron agregados al stagging
+#git rm --cached "file" -> Elimina un archivo del stagging pero no del disco duro
+#git rm --force "file" -> Elimina los archivos del git y del disco duro
+#git config --global user.name -> Asignamos el nombre de nuestro usuario git
+#git config --global user.email -> Asignamos el correo de nuestro usuario git
+#git config --list -> Muestra nuestras configuraciones de git
+#git config --list --show-origin -> Muestra todas las configuraciones de git y su ubicacion 
+#git checkout -> 
+#git reset "commit_id" --hard -> Todo vuelve al estado anterior
+#git reset "commit_id" --soft -> Volvemos a la version anterior, pero lo que esté en stagging, ahí permanece
+#git reset HEAD -> Saca archivos del area de staging 
+----------------Apuntes de estados de archivos en un repositorio---------------------------
+untracked -> Un archivo vive en el directotorio, no se ha ido a stagging
+tracked en stagging -> El archivo vive en el stagging una vez se le dio add
+tracked en repositorio -> El archivo vive en el repositorio una vez se commitea
+git reset borra todo, tener cuidado al ejecutarlo, es una manera de volver al pasado de una manera agresiva.
+git log --oneline - Te muestra el id commit y el título del commit.
+git log --decorate- Te muestra donde se encuentra el head point en el log.
+git log --stat - Explica el número de líneas que se cambiaron brevemente.
+git log -p- Explica el número de líneas que se cambiaron y te muestra que se cambió en el contenido.
+git shortlog - Indica que commits ha realizado un usuario, mostrando el usuario y el titulo de sus commits.
+git log --graph --oneline --decorate y
+git log --pretty=format:"%cn hizo un commit %h el dia %cd" - Muestra mensajes personalizados de los commits.
+git log -3 - Limitamos el número de commits.
+git log --after=“2018-1-2” ,
+git log --after=“today” y
+git log --after=“2018-1-2” --before=“today” - Commits para localizar por fechas.
+git log --author=“Name Author” - Commits realizados por autor que cumplan exactamente con el nombre.
+git log --grep=“INVIE” - Busca los commits que cumplan tal cual está escrito entre las comillas.
+git log --grep=“INVIE” –i- Busca los commits que cumplan sin importar mayúsculas o minúsculas.
+git log – index.html- Busca los commits en un archivo en específico.
+git log -S “Por contenido”- Buscar los commits con el contenido dentro del archivo.
+git log > log.txt - guardar los logs en un archivo txt
+git clone 'url' -> Nos permite descargar los archivos de la ultima version de la rama principal del repositorio
+git push -> Luego de hacer add y commit, con este comando enviamos nuestros cambios al servidor del repositorio
+git fetch -> Lo usamor para traer actualizaciones del servidor remoto y guardarlos en nuestro repositorio local
+git merge -> Combina nuestros cambios con los de otra rama
+git pull -> Es un git fetch y un git merge al mismo tiempo.
+-------------------------------Generar Llaves Publicas y Privadas---------------------
+Generar una nueva llave SSH:
+ssh-keygen -t rsa -b 4096 "yourmail@example.com"
+Comprobar el proceso y agregar la llave al sistema:
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+------------------------------------------GIT STATSH----------------------------------------
+git stash: Guarda información de manera temporal sin realizar un commit.
+git stash list: Muestra la lista de los stash que están guardados en memoria.
+git stash drop: Elimina nuestra stash list.
+-------------------------------------------------Git clean--------------------------------------
+git clean --dry-run : Simula lo que se ve a borrar, sin borrarse.
+git clean -f: Se borran los archivos basura de nuestro proyecto que no se encuentren en el .gitignore.
+git cherry-pick [commitid]: trae los cambios de ese commit a la rama en que se invoca.
+------------------------------ Git comandos de emergencia------------------------------
+git commit --ammend: el cambio que haces se agrega en el commit anterior.
+git reset --SOFT: Mantiene lo que tengas en staging. Nos regresa esa posición en la que estuvimos antes.
+git reset --HARD: Borra todo. 
+git reflog: Nos muestra todos los head.
+git grep palabra_a_buscar: Muestra los archivos en donde exista tal palabra.
+git grep -n palabra_a_buscar: Nos muestra también el numero de linea en donde se situa la palabra.
+git grep -c palabra_a_buscar: Cuenta el numero de veces que has usado una palabra y en donde.
+git log -S "palabra_a_buscar": Muestra los commits en los que usaste esa palabra.
+git branch -D nombre: Elimina un branch.
+---------------------------__BONUS__-------------------------------------------------------
+git shortlog -sn = muestra cuantos commit han hecho cada miembros del equipo.
+git shortlog -sn --all = muestra cuantos commit han hecho cada miembros del equipo hasta los que han sido eliminado
+git shortlog -sn --all --no-merge = muestra cuantos commit han hecho cada miembros quitando los eliminados sin los merges
+git blame ARCHIVO = muestra quien hizo cada cosa linea por linea
+git COMANDO --help = muestra como funciona el comando.
+git blame ARCHIVO -Llinea_inicial,linea_final= muestra quien hizo cada cosa linea por linea indicándole desde que linea ver ejemplo -L35,50
+**git branch -r **= se muestran todas las ramas remotas
+git branch -a = se muestran todas las ramas tanto locales como remotas
